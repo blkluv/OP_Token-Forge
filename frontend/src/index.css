@@ -4,22 +4,21 @@
     /* FONTS */
     --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
     
-    /* SURFACE COLORS - High Contrast White & Black */
-    --color-surface: #ffffff;           /* Page Background */
-    --color-surface-dark: #0a0a0a;      /* Jet Black Card Background */
-    --color-surface-muted: #f1f5f9;     /* Subtle Wells / Backgrounds */
+    /* SURFACE COLORS - Switched to Midnight/Deep Navy Base */
+    --color-surface: #020617;           /* Deep Midnight Base */
+    --color-surface-card: #0f172a;      /* Navy Card Surface */
+    --color-surface-accent: #1e293b;    /* Highlighted Surface */
     
-    /* THE SIGNATURE WEALTH GRADIENT v2.0 */
+    /* THE SIGNATURE WEALTH GRADIENT v2.0 (High Vibrancy) */
     --color-cyan-glow: #00f2ff;
     --color-purple-glow: #a855f7;
     --color-pink-glow: #ec4899;
     --color-orange-glow: #ff6b00;
     
     /* UI ELEMENTS */
-    --color-border: #e2e8f0;            /* Light Border */
-    --color-border-dark: #262626;       /* Dark Card Border */
-    --color-text-main: #0f172a;         /* Deep Slate Text */
-    --color-text-muted: #64748b;        /* Muted Grey Text */
+    --color-border: #1e293b;            /* Darker Border for Depth */
+    --color-text-main: #f8fafc;         /* Off-White for High Readability */
+    --color-text-muted: #94a3b8;        /* Slate Muted Text */
 }
 
 /* CUSTOM UTILITIES */
@@ -30,62 +29,79 @@ body {
     color: var(--color-text-main);
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    /* REPLICATES THE BLURRY MESH IN YOUR ICON */
+    background-image: 
+        radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 100% 100%, rgba(255, 107, 0, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
 }
 
-/* 1. WEALTH GRADIENT UTILITY */
+/* 1. BRAND WEALTH GRADIENT (Applied to "Create Your Rent Token") */
 .wealth-gradient-text {
     background: linear-gradient(135deg, 
         var(--color-cyan-glow) 0%, 
-        var(--color-purple-glow) 40%, 
-        var(--color-pink-glow) 70%, 
+        var(--color-purple-glow) 35%, 
+        var(--color-pink-glow) 65%, 
         var(--color-orange-glow) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3));
 }
 
-/* 2. JET BLACK ACTION BUTTON */
-.btn-primary-black {
-    background-color: var(--color-surface-dark) !important;
-    color: #ffffff !important;
+/* 2. THE ACTION BUTTON (Glow Variant) */
+.btn-primary-glow {
+    background: #ffffff !important;
+    color: #000000 !important;
     border-radius: 9999px;
     padding: 1rem 2.5rem;
     font-weight: 800;
     text-transform: uppercase;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--color-surface-dark);
+    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
 }
 
-.btn-primary-black:hover {
+.btn-primary-glow:hover {
     transform: translateY(-4px);
-    border-color: var(--color-cyan-glow);
-    box-shadow: 0 20px 40px rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 30px rgba(0, 242, 255, 0.5), 0 0 60px rgba(168, 85, 247, 0.2);
+    background-color: var(--color-cyan-glow) !important;
 }
 
-/* 3. INTERACTIVE STEP CARDS */
+/* 3. INTERACTIVE STEP CARDS (v2.0 Neon Style) */
 .step-card {
-    background: #ffffff;
+    background: var(--color-surface-card);
     border: 1px solid var(--color-border);
     border-radius: 2rem;
     padding: 3rem;
     transition: all 0.4s ease;
     position: relative;
+    backdrop-filter: blur(10px);
 }
 
 .step-card:hover {
-    background: var(--color-surface-dark);
+    background: var(--color-surface-accent);
     transform: translateY(-10px);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Card Number Glow */
+/* Card Number - Neon Flickers on Hover */
+.step-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
 .step-card:hover .step-number {
     background: linear-gradient(135deg, var(--color-cyan-glow), var(--color-orange-glow));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px var(--color-cyan-glow));
 }
 
-/* Hover Border Glow */
+/* THE EDGE-GLOW RADIANCE */
 .step-card::after {
     content: '';
     position: absolute;
@@ -98,5 +114,5 @@ body {
 }
 
 .step-card:hover::after {
-    opacity: 1;
+    opacity: 0.6;
 }
