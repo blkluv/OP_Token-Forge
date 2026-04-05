@@ -1,188 +1,38 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
-
-    /* BASE */
-    --color-bg: #0a0a0a;
-    --color-surface: #111111;
-    --color-border: rgba(255,255,255,0.08);
-
-    --color-text-primary: #FFFFFF;
-    --color-text-secondary: rgba(255,255,255,0.6);
-
-    /* CREMARKET GRADIENT (MATCH IMAGE) */
-    --gradient-main: linear-gradient(135deg, #3b82f6 0%, #9333ea 50%, #ff0066 100%);
-    --gradient-soft: radial-gradient(circle at 30% 30%, #3b82f6, transparent 40%),
-                     radial-gradient(circle at 70% 70%, #ff0066, transparent 40%),
-                     radial-gradient(circle at 50% 50%, #9333ea, transparent 50%);
-
-    /* ACCENT TOKENS */
-    --color-accent: #9333ea;
-    --color-accent-2: #ff0066;
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --color-surface: #0a0a0f;
+    --color-surface-light: #12121a;
+    --color-surface-lighter: #1a1a2e;
+    --color-accent: #7c3aed;
+    --color-accent-light: #a78bfa;
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-border: #2a2a3e;
 }
 
-/* BODY — DARK + GLOW */
 body {
     font-family: var(--font-sans);
-    background: var(--color-bg);
-    color: var(--color-text-primary);
+    background: var(--color-surface);
+    color: #e2e8f0;
     margin: 0;
-    line-height: 1.5;
 }
 
-/* FULL PAGE BACKDROP (THIS IS THE BRAND) */
-.app-bg {
-    position: fixed;
-    inset: 0;
-    background: var(--gradient-soft);
-    filter: blur(120px);
-    opacity: 0.7;
-    z-index: -1;
+.card-glow {
+    position: relative;
 }
-
-/* HEADER */
-.black-header {
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(20px);
-    color: white;
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--color-border);
-}
-
-/* FOOTER */
-.black-footer {
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(20px);
-    padding: 48px 32px;
-    margin-top: 60px;
-    border-top: 1px solid var(--color-border);
-}
-
-/* HERO TEXT — EXACT MATCH TO IMAGE */
-.gradient-h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
-    background: var(--gradient-main);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.03em;
-}
-
-/* STATUS BADGE (GLASS) */
-.status-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.7rem;
-    backdrop-filter: blur(10px);
-}
-
-/* PRIMARY BUTTON — GRADIENT */
-.btn-primary {
-    background: var(--gradient-main);
-    color: white;
-    padding: 12px 28px;
-    border-radius: 999px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: all 0.25s ease;
-}
-
-.btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px rgba(147,51,234,0.6);
-}
-
-/* SECONDARY BUTTON (GLASS) */
-.btn-secondary {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid var(--color-border);
-    color: white;
-    padding: 12px 28px;
-    border-radius: 999px;
-    backdrop-filter: blur(10px);
-    transition: all 0.2s;
-}
-
-.btn-secondary:hover {
-    border-color: rgba(255,255,255,0.2);
-    background: rgba(255,255,255,0.08);
-}
-
-/* CARDS — GLASSMORPHISM */
-.card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--color-border);
-    border-radius: 20px;
-    padding: 24px;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(147,51,234,0.5);
-    box-shadow: 0 0 40px rgba(147,51,234,0.25);
-}
-
-/* CARD GLOW (ACTUAL GEN Z EFFECT) */
-.card::before {
-    content: "";
+.card-glow::before {
+    content: '';
     position: absolute;
-    inset: 0;
+    inset: -1px;
     border-radius: inherit;
-    background: var(--gradient-main);
-    opacity: 0;
+    background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), transparent 50%);
     z-index: -1;
-    filter: blur(40px);
+    opacity: 0;
     transition: opacity 0.3s;
 }
-
-.card:hover::before {
-    opacity: 0.25;
+.card-glow:hover::before {
+    opacity: 1;
 }
-
-/* GRID */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* TEXT */
-.section-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-}
-
-.section-subtitle {
-    color: var(--color-text-secondary);
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    .gradient-h1 {
-        font-size: 2.2rem;
-    }
-
-    .black-header {
-        flex-direction: column;
-        gap: 12px;
-        padding: 16px;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
