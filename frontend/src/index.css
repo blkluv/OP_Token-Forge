@@ -1,118 +1,106 @@
 @import "tailwindcss";
 
 @theme {
-    /* FONTS */
+    /* FONTS - Professional & Sharp */
     --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
     
-    /* SURFACE COLORS - Switched to Midnight/Deep Navy Base */
-    --color-surface: #020617;           /* Deep Midnight Base */
-    --color-surface-card: #0f172a;      /* Navy Card Surface */
-    --color-surface-accent: #1e293b;    /* Highlighted Surface */
+    /* THE MIDNIGHT BASE - Essential for Neon Pop */
+    --color-surface: #020617;           /* Midnight Navy Base */
+    --color-surface-card: #0f172a;      /* Navy Card Depth */
     
-    /* THE SIGNATURE WEALTH GRADIENT v2.0 (High Vibrancy) */
-    --color-cyan-glow: #00f2ff;
-    --color-purple-glow: #a855f7;
-    --color-pink-glow: #ec4899;
-    --color-orange-glow: #ff6b00;
+    /* THE WEALTH GRADIENT v2.0 TOKENS */
+    --color-cyan-glow: #00F2FF;         /* Neon Cyan */
+    --color-purple-glow: #A855F7;       /* Electric Purple */
+    --color-magenta-glow: #EC4899;      /* Vivid Magenta */
+    --color-orange-glow: #FF6B00;       /* Deep Orange */
     
     /* UI ELEMENTS */
-    --color-border: #1e293b;            /* Darker Border for Depth */
-    --color-text-main: #f8fafc;         /* Off-White for High Readability */
-    --color-text-muted: #94a3b8;        /* Slate Muted Text */
+    --color-border: #1e293b;
+    --color-text-main: #f8fafc;         /* High-contrast White */
+    --color-text-muted: #94a3b8;
 }
 
-/* CUSTOM UTILITIES */
+/* --- REINFORCED BRAND UTILITIES --- */
 
 body {
     font-family: var(--font-sans);
-    background: var(--color-surface);
+    background-color: var(--color-surface);
     color: var(--color-text-main);
     margin: 0;
     -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-    /* REPLICATES THE BLURRY MESH IN YOUR ICON */
+    /* REPLICATES THE BLURRY MESH FROM THE ICON */
     background-image: 
-        radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 100% 100%, rgba(255, 107, 0, 0.1) 0%, transparent 40%),
-        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(255, 107, 0, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
 }
 
-/* 1. BRAND WEALTH GRADIENT (Applied to "Create Your Rent Token") */
-.wealth-gradient-text {
+/* 1. THE SIGNATURE GRADIENT HEADER */
+.wealth-gradient-header {
     background: linear-gradient(135deg, 
         var(--color-cyan-glow) 0%, 
         var(--color-purple-glow) 35%, 
-        var(--color-pink-glow) 65%, 
+        var(--color-magenta-glow) 65%, 
         var(--color-orange-glow) 100%
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 900;
-    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.3));
+    letter-spacing: -0.05em;
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.25));
 }
 
-/* 2. THE ACTION BUTTON (Glow Variant) */
-.btn-primary-glow {
+/* 2. THE PRIMARY ACTION (NEON CYAN ACTIVE STATE) */
+.btn-action {
     background: #ffffff !important;
     color: #000000 !important;
     border-radius: 9999px;
-    padding: 1rem 2.5rem;
-    font-weight: 800;
+    padding: 1.25rem 3rem;
+    font-weight: 900;
     text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.15); /* Neon Cyan */
 }
 
-.btn-primary-glow:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 0 30px rgba(0, 242, 255, 0.5), 0 0 60px rgba(168, 85, 247, 0.2);
-    background-color: var(--color-cyan-glow) !important;
+.btn-action:hover {
+    transform: translateY(-5px);
+    background-color: var(--color-cyan-glow) !important; /* Active State */
+    box-shadow: 0 0 35px rgba(0, 242, 255, 0.5);
 }
 
-/* 3. INTERACTIVE STEP CARDS (v2.0 Neon Style) */
-.step-card {
+/* 3. THE "HOW IT WORKS" CARDS (PRO MODE) */
+.step-card-pro {
     background: var(--color-surface-card);
     border: 1px solid var(--color-border);
-    border-radius: 2rem;
-    padding: 3rem;
+    border-radius: 2.5rem;
+    padding: 4rem;
     transition: all 0.4s ease;
     position: relative;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
 }
 
-.step-card:hover {
-    background: var(--color-surface-accent);
-    transform: translateY(-10px);
+.step-card-pro:hover {
+    background: #1e293b;
+    transform: translateY(-12px);
     border-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Card Number - Neon Flickers on Hover */
-.step-number {
-    font-size: 4rem;
-    font-weight: 900;
-    color: #ffffff;
-    transition: 0.3s;
-}
-
-.step-card:hover .step-number {
-    background: linear-gradient(135deg, var(--color-cyan-glow), var(--color-orange-glow));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px var(--color-cyan-glow));
-}
-
-/* THE EDGE-GLOW RADIANCE */
-.step-card::after {
+/* Glow Border on Hover */
+.step-card-pro::after {
     content: '';
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, var(--color-cyan-glow), var(--color-purple-glow), var(--color-orange-glow));
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow), 
+        var(--color-purple-glow), 
+        var(--color-orange-glow)
+    );
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
-.step-card:hover::after {
-    opacity: 0.6;
+.step-card-pro:hover::after {
+    opacity: 0.7;
 }
