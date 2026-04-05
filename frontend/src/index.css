@@ -1,38 +1,88 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
-    --color-surface: #0a0a0f;
-    --color-surface-light: #12121a;
-    --color-surface-lighter: #1a1a2e;
-    --color-accent: #7c3aed;
-    --color-accent-light: #a78bfa;
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-border: #2a2a3e;
+    /* Fonts - Switched to Inter/Poppins mix for the modern tech look */
+    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    
+    /* Surface Colors - Switched to High Contrast White/Black */
+    --color-surface: #ffffff; /* Main background */
+    --color-surface-dark: #000000; /* For those jet-black cards */
+    --color-surface-muted: #f8fafc; /* For background sections or subtle wells */
+    
+    /* The "Wealth Gradient" Palette */
+    --color-cyan-glow: #00f2ff;
+    --color-purple-glow: #a855f7;
+    --color-pink-glow: #ec4899;
+    --color-orange-glow: #ff6b00;
+    
+    /* Functional Colors */
+    --color-border: #e2e8f0;
+    --color-text-main: #0f172a;
+    --color-text-muted: #64748b;
 }
 
 body {
     font-family: var(--font-sans);
     background: var(--color-surface);
-    color: #e2e8f0;
+    color: var(--color-text-main);
     margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
+/* THE SIGNATURE GRADIENT TEXT */
+.wealth-gradient-text {
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow) 0%, 
+        var(--color-purple-glow) 40%, 
+        var(--color-pink-glow) 70%, 
+        var(--color-orange-glow) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+/* CARD GLOW - Updated for White Background */
 .card-glow {
     position: relative;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
+.card-glow:hover {
+    transform: translateY(-8px);
+    border-color: transparent;
+    box-shadow: 0 30px 60px -12px rgba(168, 85, 247, 0.15);
+}
+
+/* Hover Border Gradient Effect */
 .card-glow::before {
     content: '';
     position: absolute;
-    inset: -1px;
+    inset: -2px; /* Slight offset for the border glow */
     border-radius: inherit;
-    background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), transparent 50%);
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow), 
+        var(--color-purple-glow), 
+        var(--color-orange-glow)
+    );
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s;
 }
+
 .card-glow:hover::before {
     opacity: 1;
+}
+
+/* JET BLACK CARD VARIANT (Like the mobile app look) */
+.card-dark {
+    background: var(--color-surface-dark);
+    color: #ffffff;
+    border: 1px solid #262626;
+}
+
+.card-dark .text-muted {
+    color: #94a3b8;
 }
