@@ -19,7 +19,7 @@ export default function App() {
                         </Routes>
                     </main>
                     <footer className="border-t border-border py-6 text-center text-gray-600 text-sm">
-                        VibeToken Factory &middot; Powered by OPNet &middot; Bitcoin L1
+                        Tokenized Rent &middot; Powered by CREMARKET.io &middot; Bitcoin L1
                     </footer>
                 </div>
             </BrowserRouter>
