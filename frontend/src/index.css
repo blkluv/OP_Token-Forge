@@ -1,119 +1,181 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
 
-@theme {
-    /* FONTS - Optimized for the "Modern Blueprint" look */
-    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
-    
-    /* SURFACE COLORS - High Contrast White & Black */
-    --color-surface: #ffffff;           /* Page Background */
-    --color-surface-dark: #0a0a0a;      /* Jet Black Card Background */
-    --color-surface-muted: #f1f5f9;     /* Subtle Wells / Backgrounds */
-    
-    /* THE SIGNATURE WEALTH GRADIENT (v2.0) */
-    --color-cyan-glow: #00f2ff;
-    --color-purple-glow: #a855f7;
-    --color-pink-glow: #ec4899;
-    --color-orange-glow: #ff6b00;
-    
-    /* UI ELEMENTS */
-    --color-border: #e2e8f0;            /* Light Border */
-    --color-border-dark: #262626;       /* Dark Card Border */
-    --color-text-main: #0f172a;         /* Deep Slate Text */
-    --color-text-muted: #64748b;        /* Muted Grey Text */
-    
-    /* FUNCTIONAL */
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
+:root {
+    /* WEALTH GRADIENT v2.0 */
+    --wealth-gradient: linear-gradient(135deg, #00f2ff 0%, #a855f7 40%, #ec4899 70%, #ff6b00 100%);
+    --card-black: #0a0a0a;
+    --neon-cyan: #00f2ff;
+    --text-slate: #0f172a;
 }
 
-/* GLOBAL RESET & BASE STYLES */
 body {
-    font-family: var(--font-sans);
-    background: var(--color-surface);
-    color: var(--color-text-main);
+    background-color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-slate);
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    /* Subtle background glow to add depth to white space */
+    background-image: 
+        radial-gradient(circle at 5% 5%, rgba(0, 242, 255, 0.03) 0%, transparent 40%),
+        radial-gradient(circle at 95% 95%, rgba(255, 107, 0, 0.03) 0%, transparent 40%);
 }
 
-/* --- THE SIGNATURE COMPONENTS --- */
+/* --- HERO SECTION --- */
 
-/* 1. WEALTH GRADIENT TEXT (Matches "CREMARKET SOCIAL" header) */
-.wealth-gradient-text {
-    background: linear-gradient(135deg, 
-        var(--color-cyan-glow) 0%, 
-        var(--color-purple-glow) 40%, 
-        var(--color-pink-glow) 70%, 
-        var(--color-orange-glow) 100%
-    );
+h1 {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 900;
+    background: var(--wealth-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    letter-spacing: -4px;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    text-align: center;
+}
+
+/* --- BUTTONS --- */
+
+.explore-btn {
+    display: inline-block;
+    background: var(--card-black) !important;
+    color: #ffffff !important;
+    padding: 20px 50px;
+    border-radius: 100px;
     font-weight: 900;
-    letter-spacing: -0.05em;
-    filter: drop-shadow(0 10px 15px rgba(168, 85, 247, 0.1));
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--card-black);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-/* 2. CARD GLOW - Hover Effect for White Background */
-.card-glow {
-    position: relative;
+.explore-btn:hover {
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 20px 40px rgba(0, 242, 255, 0.2);
+}
+
+/* --- STATS / NETWORK SECTION --- */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 80px 0;
+    border-top: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 40px 0;
+}
+
+.stat-item {
+    text-align: center;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+/* --- HOW IT WORKS CARDS --- */
+
+.how-it-works-title {
+    font-size: 3rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 60px;
+    letter-spacing: -2px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+.step-card {
     background: #ffffff;
-    border: 1px solid var(--color-border);
-    border-radius: 24px;
-    padding: 2rem;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 1;
-}
-
-.card-glow:hover {
-    transform: translateY(-8px);
-    border-color: transparent;
-    box-shadow: 0 30px 60px -12px rgba(168, 85, 247, 0.15);
-}
-
-/* Interactive Border Glow */
-.card-glow::before {
-    content: '';
-    position: absolute;
-    inset: -2px;
-    border-radius: inherit;
-    background: linear-gradient(135deg, 
-        var(--color-cyan-glow), 
-        var(--color-purple-glow), 
-        var(--color-orange-glow)
-    );
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card-glow:hover::before {
-    opacity: 1;
-}
-
-/* 3. JET BLACK CARD (Matches the "Only Baddies" / Pro Dashboard style) */
-.card-dark {
-    background: var(--color-surface-dark);
-    color: #ffffff;
-    border: 1px solid var(--color-border-dark);
-    border-radius: 32px;
-    padding: 2.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 40px;
+    padding: 60px 40px;
+    transition: all 0.4s ease;
+    text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-.card-dark .text-muted {
-    color: #94a3b8;
+/* Add the number indicator in the center */
+.step-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: var(--text-slate);
+    margin-bottom: 20px;
 }
 
-/* 4. "NOW LIVE" STATUS BADGE */
-.status-badge {
-    display: inline-block;
+.step-card:hover {
+    background: var(--card-black);
+    border-color: #262626;
+    transform: translateY(-15px);
+}
+
+.step-card:hover .step-number {
+    background: var(--wealth-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Hover Border Glow Logic */
+.step-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    border: 2px solid transparent;
+    background: var(--wealth-gradient) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.step-card:hover::after {
+    opacity: 1;
+}
+
+/* --- TOP NAVIGATION MODS --- */
+
+.nav-link {
+    color: var(--text-slate);
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #a855f7;
+}
+
+.wallet-btn {
+    border: 1px solid #e2e8f0;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.wallet-btn:hover {
     background: #000;
     color: #fff;
-    padding: 6px 16px;
-    border-radius: 100px;
-    font-size: 0.7rem;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
+    border-color: #000;
 }
