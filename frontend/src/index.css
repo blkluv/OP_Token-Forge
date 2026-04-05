@@ -1,148 +1,119 @@
 @import "tailwindcss";
 
 @theme {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    /* FONTS - Optimized for the "Modern Blueprint" look */
+    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
     
-    /* CREMARKET SOCIAL color scheme (light theme) */
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #F8F9FA;
-    --color-text-primary: #212529;
-    --color-text-secondary: #6C757D;
-    --color-border: #E9ECEF;
-    --color-accent: #0D6EFD;
-    --color-accent-hover: #0B5ED7;
+    /* SURFACE COLORS - High Contrast White & Black */
+    --color-surface: #ffffff;           /* Page Background */
+    --color-surface-dark: #0a0a0a;      /* Jet Black Card Background */
+    --color-surface-muted: #f1f5f9;     /* Subtle Wells / Backgrounds */
+    
+    /* THE SIGNATURE WEALTH GRADIENT (v2.0) */
+    --color-cyan-glow: #00f2ff;
+    --color-purple-glow: #a855f7;
+    --color-pink-glow: #ec4899;
+    --color-orange-glow: #ff6b00;
+    
+    /* UI ELEMENTS */
+    --color-border: #e2e8f0;            /* Light Border */
+    --color-border-dark: #262626;       /* Dark Card Border */
+    --color-text-main: #0f172a;         /* Deep Slate Text */
+    --color-text-muted: #64748b;        /* Muted Grey Text */
+    
+    /* FUNCTIONAL */
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
 }
 
-.status-badge {
-    display: inline-block;
-    background: #E8F0FE;
-    color: var(--color-accent);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    margin-bottom: 16px;
+/* GLOBAL RESET & BASE STYLES */
+body {
+    font-family: var(--font-sans);
+    background: var(--color-surface);
+    color: var(--color-text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
 }
 
-.wealth-text {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin-bottom: 8px;
+/* --- THE SIGNATURE COMPONENTS --- */
+
+/* 1. WEALTH GRADIENT TEXT (Matches "CREMARKET SOCIAL" header) */
+.wealth-gradient-text {
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow) 0%, 
+        var(--color-purple-glow) 40%, 
+        var(--color-pink-glow) 70%, 
+        var(--color-orange-glow) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    filter: drop-shadow(0 10px 15px rgba(168, 85, 247, 0.1));
 }
 
-.subtitle {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 32px;
-}
-
-.pillar-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
-
-.pillar-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    padding: 24px;
-    transition: all 0.2s ease;
-}
-
-.pillar-card:hover {
-    border-color: var(--color-accent);
-    transform: translateY(-2px);
-}
-
-.featured-border {
-    border: 1px solid var(--color-accent);
-    background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
-}
-
-.pillar-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
-}
-
-.pillar-card h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--color-text-primary);
-}
-
-.pillar-card p {
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    margin-bottom: 20px;
-    line-height: 1.4;
-}
-
-.pillar-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    background: transparent;
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
-    color: var(--color-text-primary);
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.2s;
-}
-
-.pillar-btn:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
-}
-
-.pillar-btn.highlighted {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
-}
-
-.pillar-btn.ghost {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.btn-arrow {
-    font-size: 0.8rem;
-    transition: transform 0.2s;
-}
-
-.pillar-btn:hover .btn-arrow {
-    transform: translateX(3px);
-}
-
+/* 2. CARD GLOW - Hover Effect for White Background */
 .card-glow {
     position: relative;
+    background: #ffffff;
+    border: 1px solid var(--color-border);
+    border-radius: 24px;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
 }
 
-.cre-mission-control-wrapper {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px 24px;
+.card-glow:hover {
+    transform: translateY(-8px);
+    border-color: transparent;
+    box-shadow: 0 30px 60px -12px rgba(168, 85, 247, 0.15);
 }
 
-.cre-mission-control {
-    text-align: center;
+/* Interactive Border Glow */
+.card-glow::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow), 
+        var(--color-purple-glow), 
+        var(--color-orange-glow)
+    );
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-@media (max-width: 768px) {
-    .pillar-grid {
-        grid-template-columns: 1fr;
-    }
-    .wealth-text {
-        font-size: 1.8rem;
-    }
-    .pillar-card {
-        padding: 20px;
-    }
+.card-glow:hover::before {
+    opacity: 1;
+}
+
+/* 3. JET BLACK CARD (Matches the "Only Baddies" / Pro Dashboard style) */
+.card-dark {
+    background: var(--color-surface-dark);
+    color: #ffffff;
+    border: 1px solid var(--color-border-dark);
+    border-radius: 32px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-dark .text-muted {
+    color: #94a3b8;
+}
+
+/* 4. "NOW LIVE" STATUS BADGE */
+.status-badge {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
 }
