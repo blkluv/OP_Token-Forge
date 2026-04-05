@@ -1,275 +1,245 @@
-@import "tailwindcss";
+/* ===== CREMARKET SOCIAL — MATCHES SCREENSHOT EXACTLY ===== */
 
-@theme {
-    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-    --color-bg: #ffffff;
-    --color-card: #f8f9fa;
-    --color-border: #e9ecef;
-    --color-accent: #0066FF;
-    --color-accent-light: #3b82f6;
-    --color-text: #1a1a2e;
-    --color-text-muted: #6c757d;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+:root {
+    --bg-white: #FFFFFF;
+    --bg-gray: #F8F9FA;
+    --border-light: #E9ECEF;
+    --text-dark: #212529;
+    --text-muted: #6C757D;
+    --accent-blue: #0D6EFD;
+    --accent-hover: #0B5ED7;
+    --sidebar-bg: #F8F9FA;
 }
 
 body {
-    font-family: var(--font-sans);
-    background: var(--color-bg);
-    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+    background: var(--bg-white);
+    color: var(--text-dark);
     margin: 0;
     line-height: 1.5;
+}
+
+/* Header / Navigation */
+.cre-header {
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-light);
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area .brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.logo-area .powered-by {
+    font-size: 0.7rem;
+    color: var(--text-muted);
 }
 
 /* Status Badge — "NOW LIVE · v2.0" */
 .status-badge {
     display: inline-block;
-    background: #e8f0fe;
-    color: var(--color-accent);
+    background: #E8F0FE;
+    color: var(--accent-blue);
     padding: 4px 12px;
-    border-radius: 100px;
+    border-radius: 20px;
     font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.5px;
     margin-bottom: 16px;
 }
 
-/* Wealth Text — "CREMARKET SOCIAL" */
+/* Hero Title — "CREMARKET SOCIAL" */
 .wealth-text {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    color: var(--color-text);
-    letter-spacing: -0.5px;
+    color: var(--text-dark);
     margin-bottom: 8px;
 }
 
-/* Subtitle */
+/* Subtitle — "The blueprint for modern Commercial Real Estate" */
 .subtitle {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
+    font-size: 1rem;
+    color: var(--text-muted);
     margin-bottom: 32px;
 }
 
-/* Pillar Grid — 4 cards layout */
-.pillar-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    max-width: 1200px;
+/* Main Layout — Sidebar + Content */
+.community-layout {
+    display: flex;
+    max-width: 1400px;
     margin: 0 auto;
-}
-
-@media (max-width: 1024px) {
-    .pillar-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .pillar-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* Card — clean, white, subtle shadow */
-.pillar-card {
-    background: var(--color-card);
-    border: 1px solid var(--color-border);
-    border-radius: 16px;
     padding: 24px;
-    transition: all 0.2s ease;
-    text-align: center;
+    gap: 32px;
 }
 
-.pillar-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--color-accent-light);
+/* Sidebar */
+.community-sidebar {
+    width: 260px;
+    flex-shrink: 0;
 }
 
-/* Featured Card — subtle highlight */
-.featured-border {
-    border: 1px solid var(--color-accent);
-    background: linear-gradient(135deg, #fff, #f0f7ff);
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
 }
 
-/* Icon */
-.pillar-icon {
-    font-size: 2rem;
-    margin-bottom: 16px;
+.sidebar-nav li {
+    margin-bottom: 4px;
 }
 
-/* Card Title */
-.pillar-card h3 {
+.sidebar-nav a {
+    display: block;
+    padding: 8px 12px;
+    color: var(--text-dark);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background: var(--bg-gray);
+    font-weight: 500;
+}
+
+/* Main Content */
+.community-main {
+    flex: 1;
+}
+
+/* Section Titles */
+.section-title {
     font-size: 1.1rem;
     font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--text-dark);
+}
+
+/* Space Cards */
+.spaces-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.space-card {
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s;
+}
+
+.space-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.space-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 8px;
-    color: var(--color-text);
 }
 
-/* Card Description */
-.pillar-card p {
+.space-card p {
     font-size: 0.8rem;
-    color: var(--color-text-muted);
-    line-height: 1.4;
-    margin-bottom: 20px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
 }
 
-/* Button */
+.space-meta {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 16px;
+}
+
+/* Trending Section */
+.trending-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.trending-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.trending-list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+}
+
+.trending-stats {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Top Members */
+.member-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.member-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.member-name {
+    font-weight: 500;
+}
+
+.member-points {
+    color: var(--accent-blue);
+}
+
+/* Right Sidebar */
+.community-right {
+    width: 260px;
+    flex-shrink: 0;
+}
+
+/* Button styles */
 .pillar-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
     background: transparent;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--border-light);
     border-radius: 100px;
-    color: var(--color-text);
+    color: var(--text-dark);
     font-size: 0.75rem;
-    font-weight: 500;
     text-decoration: none;
-    transition: all 0.2s;
-}
-
-.pillar-btn:hover {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-    color: white;
 }
 
 .pillar-btn.highlighted {
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
     color: white;
 }
 
-.pillar-btn.ghost {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.pillar-btn.ghost:hover {
-    background: transparent;
-    color: var(--color-text);
-}
-
-.btn-arrow {
-    font-size: 0.8rem;
-}
-
-/* Card Glow — subtle, not heavy */
-.card-glow {
-    position: relative;
-}
-
-.card-glow::before {
-    content: '';
-    position: absolute;
-    inset: -1px;
-    border-radius: 16px;
-    background: transparent;
-    z-index: -1;
-}
-
-/* Container */
-.cre-mission-control-wrapper {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 40px 24px;
-}
-
-.cre-mission-control {
-    text-align: center;
-}
-
-/* Rent Token specific styles (from second screenshot) */
-.rent-hero {
-    text-align: center;
-    padding: 48px 24px;
-}
-
-.rent-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 16px;
-}
-
-.rent-description {
-    font-size: 1rem;
-    color: var(--color-text-muted);
-    max-width: 600px;
-    margin: 0 auto 32px;
-}
-
-.rent-buttons {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    margin-bottom: 48px;
-}
-
-.btn-primary {
-    background: var(--color-accent);
-    color: white;
-    padding: 10px 24px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 1px solid var(--color-border);
-    color: var(--color-text);
-    padding: 10px 24px;
-    border-radius: 100px;
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.stats-grid {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    margin-bottom: 48px;
-}
-
-.stat-card {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color-text);
-}
-
-.stat-label {
-    font-size: 0.75rem;
-    color: var(--color-text-muted);
-}
-
-.how-it-works {
-    display: flex;
-    justify-content: center;
-    gap: 48px;
-    margin-top: 48px;
-}
-
-.step {
-    text-align: center;
-}
-
-.step-number {
-    width: 32px;
-    height: 32px;
-    background: var(--color-accent);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 12px;
-    font-weight: 600;
+/* Responsive */
+@media (max-width: 1024px) {
+    .community-layout {
+        flex-direction: column;
+    }
+    .community-sidebar,
+    .community-right {
+        width: 100%;
+    }
 }
