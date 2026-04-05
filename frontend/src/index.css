@@ -3,7 +3,7 @@
 @theme {
     --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     
-    /* ✅ MATCHES YOUR CRE-SOCIAL.JPG SCREENSHOT */
+    /* CREMARKET SOCIAL color scheme (light theme) */
     --color-bg-primary: #FFFFFF;
     --color-bg-secondary: #F8F9FA;
     --color-text-primary: #212529;
@@ -13,7 +13,6 @@
     --color-accent-hover: #0B5ED7;
 }
 
-/* ✅ STATUS BADGE - "NOW LIVE · v2.0" */
 .status-badge {
     display: inline-block;
     background: #E8F0FE;
@@ -25,7 +24,6 @@
     margin-bottom: 16px;
 }
 
-/* ✅ HERO TITLE - "CREMARKET SOCIAL" */
 .wealth-text {
     font-size: 2.5rem;
     font-weight: 700;
@@ -33,21 +31,18 @@
     margin-bottom: 8px;
 }
 
-/* ✅ SUBTITLE */
 .subtitle {
     font-size: 1rem;
     color: var(--color-text-secondary);
     margin-bottom: 32px;
 }
 
-/* ✅ CARD GRID */
 .pillar-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
 }
 
-/* ✅ CARD - white, border, subtle hover */
 .pillar-card {
     background: var(--color-bg-primary);
     border: 1px solid var(--color-border);
@@ -61,19 +56,16 @@
     transform: translateY(-2px);
 }
 
-/* ✅ FEATURED CARD */
 .featured-border {
     border: 1px solid var(--color-accent);
     background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
 }
 
-/* ✅ ICON */
 .pillar-icon {
     font-size: 2rem;
     margin-bottom: 16px;
 }
 
-/* ✅ CARD TITLE */
 .pillar-card h3 {
     font-size: 1.1rem;
     font-weight: 600;
@@ -81,7 +73,6 @@
     color: var(--color-text-primary);
 }
 
-/* ✅ CARD DESCRIPTION */
 .pillar-card p {
     font-size: 0.85rem;
     color: var(--color-text-secondary);
@@ -89,7 +80,6 @@
     line-height: 1.4;
 }
 
-/* ✅ BUTTON */
 .pillar-btn {
     display: inline-flex;
     align-items: center;
@@ -131,12 +121,10 @@
     transform: translateX(3px);
 }
 
-/* ✅ CARD GLOW (subtle, no neon) */
 .card-glow {
     position: relative;
 }
 
-/* ✅ WRAPPER */
 .cre-mission-control-wrapper {
     max-width: 1280px;
     margin: 0 auto;
@@ -147,16 +135,13 @@
     text-align: center;
 }
 
-/* ✅ RESPONSIVE */
 @media (max-width: 768px) {
     .pillar-grid {
         grid-template-columns: 1fr;
     }
-    
     .wealth-text {
         font-size: 1.8rem;
     }
-    
     .pillar-card {
         padding: 20px;
     }
