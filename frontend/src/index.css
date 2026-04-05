@@ -1,96 +1,169 @@
 @import "tailwindcss";
 
 @theme {
-    /* 1. THE FOUNDATION: Midnight Navy Base */
-    --color-surface: #020617;           /* The deep base for neon pop */
-    --color-surface-card: #0f172a;      /* Navy depth for containers */
+    /* FONTS - Modern & Bold */
+    --font-sans: 'Inter', 'Poppins', ui-sans-serif, system-ui, sans-serif;
     
-    /* 2. THE WEALTH TOKENS: Your Exact Hex Codes */
-    --color-neon-cyan: #00F2FF;        /* Left-side glow & Active states */
-    --color-electric-purple: #A855F7;  /* Mid-gradient transition */
-    --color-vivid-magenta: #EC4899;    /* Lower-right warmth */
-    --color-deep-orange: #FF6B00;      /* Right-side high-contrast finish */
+    /* MIDNIGHT NAVY BASE - Makes neons pop */
+    --color-surface: #020617;           /* Midnight Navy */
+    --color-surface-card: #0f172a;      /* Card depth */
     
-    /* 3. SUPPORTING UI */
-    --color-border-subtle: #1e293b;
-    --color-text-bright: #f8fafc;
+    /* NEON TOKENS (as requested) */
+    --color-cyan-glow: #00F2FF;         /* Neon Cyan - left glow, highlights */
+    --color-purple-glow: #A855F7;       /* Electric Purple - mid gradient */
+    --color-magenta-glow: #EC4899;      /* Vivid Magenta - warmth */
+    --color-orange-glow: #FF6B00;       /* Deep Orange - wealth energy */
+    
+    /* UI Elements */
+    --color-border: #1e293b;
+    --color-text-main: #f8fafc;
+    --color-text-muted: #94a3b8;
 }
 
-/* --- CUSTOM BRAND UTILITIES --- */
-
+/* Global Styles */
 body {
+    font-family: var(--font-sans);
     background-color: var(--color-surface);
-    color: var(--color-text-bright);
-    font-family: 'Inter', sans-serif;
-    /* MESH GRADIENT: Replicates the color bleed from your brand assets */
+    color: var(--color-text-main);
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    /* Mesh gradient background - creates depth */
     background-image: 
-        radial-gradient(circle at 0% 20%, rgba(0, 242, 255, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 100% 80%, rgba(255, 107, 0, 0.12) 0%, transparent 50%);
+        radial-gradient(circle at 0% 0%, rgba(0, 242, 255, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 100% 100%, rgba(255, 107, 0, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.08) 0%, transparent 45%);
 }
 
-/* THE AWARD-WINNING WEALTH GRADIENT (Applied to Headers) */
-.wealth-gradient-text {
-    background: linear-gradient(to right, 
-        var(--color-neon-cyan) 0%, 
-        var(--color-electric-purple) 33%, 
-        var(--color-vivid-magenta) 66%, 
-        var(--color-deep-orange) 100%
+/* --- SIGNATURE GRADIENT TEXT (Wealth Header) --- */
+.wealth-gradient-header {
+    background: linear-gradient(135deg, 
+        var(--color-cyan-glow) 0%, 
+        var(--color-purple-glow) 35%, 
+        var(--color-magenta-glow) 65%, 
+        var(--color-orange-glow) 100%
     );
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
     font-weight: 900;
-    filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
+    letter-spacing: -0.05em;
+    filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.25));
 }
 
-/* THE NEON CYAN PRIMARY BUTTON */
-.btn-primary-neon {
-    background-color: var(--color-neon-cyan) !important;
-    color: #020617 !important;
+/* --- BUTTONS --- */
+.btn-primary {
+    background: linear-gradient(135deg, var(--color-cyan-glow), var(--color-purple-glow));
+    border: none;
     border-radius: 9999px;
-    padding: 1.25rem 3rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 0 20px rgba(0, 242, 255, 0.4);
+    padding: 0.75rem 2rem;
+    font-weight: 700;
+    color: white;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
 }
 
-.btn-primary-neon:hover {
-    transform: scale(1.05) translateY(-2px);
-    box-shadow: 0 0 40px rgba(0, 242, 255, 0.7);
-    filter: brightness(1.1);
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
 }
 
-/* THE STEP CARDS: Midnight with Gradient Edge Glow */
-.step-card-baddie {
+.btn-secondary {
+    background: transparent;
+    border: 1px solid var(--color-cyan-glow);
+    border-radius: 9999px;
+    padding: 0.75rem 2rem;
+    font-weight: 700;
+    color: var(--color-cyan-glow);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 242, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* --- CARDS (How It Works, etc.) --- */
+.step-card {
     background: var(--color-surface-card);
-    border: 1px solid var(--color-border-subtle);
+    border: 1px solid var(--color-border);
     border-radius: 2rem;
-    padding: 3rem;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     position: relative;
-    transition: 0.4s ease;
+    backdrop-filter: blur(4px);
 }
 
-.step-card-baddie:hover {
-    transform: translateY(-10px);
-    border-color: rgba(255, 255, 255, 0.2);
+.step-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(0, 242, 255, 0.4);
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* The Animated Border Glow */
-.step-card-baddie::after {
+/* Gradient border glow on hover */
+.step-card::after {
     content: '';
     position: absolute;
     inset: -1px;
-    border-radius: inherit;
+    border-radius: 2rem;
     background: linear-gradient(135deg, 
-        var(--color-neon-cyan), 
-        var(--color-electric-purple), 
-        var(--color-deep-orange)
+        var(--color-cyan-glow), 
+        var(--color-purple-glow), 
+        var(--color-orange-glow)
     );
     z-index: -1;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
 }
 
-.step-card-baddie:hover::after {
+.step-card:hover::after {
     opacity: 0.6;
+}
+
+/* --- STATS / NUMBERS (e.g., Tokens Deployed) --- */
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--color-cyan-glow), var(--color-magenta-glow));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    line-height: 1;
+}
+
+/* --- PILL BADGES (e.g., NOW LIVE) --- */
+.badge-live {
+    background: rgba(0, 242, 255, 0.15);
+    border: 1px solid var(--color-cyan-glow);
+    border-radius: 9999px;
+    padding: 0.25rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-cyan-glow);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    backdrop-filter: blur(4px);
+}
+
+/* --- NAVIGATION / HEADER --- */
+.nav-link {
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--color-cyan-glow);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .step-card {
+        padding: 1.5rem;
+    }
+    .stat-number {
+        font-size: 2rem;
+    }
 }
