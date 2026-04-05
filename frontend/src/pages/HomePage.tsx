@@ -9,18 +9,18 @@ export function HomePage() {
             {/* Hero */}
             <section className="py-24 text-center">
                 <h1 className="text-5xl md:text-6xl font-bold mb-4">
-                    Create Your <span className="text-accent-light">Token</span>
+                    Create Your <span className="text-accent-light">Rent</span> Token
                 </h1>
                 <p className="text-gray-400 text-lg max-w-xl mx-auto mb-8">
-                    Deploy OP_20 tokens on Bitcoin with a few clicks.
-                    No coding required. Powered by OPNet.
+                    Create rent tokens on Bitcoin with a few clicks.
+                    No coding required. Powered by CREMARKET.io.
                 </p>
                 <div className="flex items-center justify-center gap-4">
                     <Link
                         to="/deploy"
                         className="px-6 py-3 rounded-lg bg-accent hover:bg-accent/80 text-white font-semibold transition-colors"
                     >
-                        Launch Token
+                        Create Rent Token
                     </Link>
                     <Link
                         to="/explore"
