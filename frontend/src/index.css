@@ -1,50 +1,23 @@
-/* ===== CREMARKET SOCIAL — MATCHES SCREENSHOT EXACTLY ===== */
+@import "tailwindcss";
 
-:root {
-    --bg-white: #FFFFFF;
-    --bg-gray: #F8F9FA;
-    --border-light: #E9ECEF;
-    --text-dark: #212529;
-    --text-muted: #6C757D;
-    --accent-blue: #0D6EFD;
-    --accent-hover: #0B5ED7;
-    --sidebar-bg: #F8F9FA;
+@theme {
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    /* ✅ MATCHES YOUR CRE-SOCIAL.JPG SCREENSHOT */
+    --color-bg-primary: #FFFFFF;
+    --color-bg-secondary: #F8F9FA;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6C757D;
+    --color-border: #E9ECEF;
+    --color-accent: #0D6EFD;
+    --color-accent-hover: #0B5ED7;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
-    background: var(--bg-white);
-    color: var(--text-dark);
-    margin: 0;
-    line-height: 1.5;
-}
-
-/* Header / Navigation */
-.cre-header {
-    background: var(--bg-white);
-    border-bottom: 1px solid var(--border-light);
-    padding: 12px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo-area .brand-text {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--text-dark);
-}
-
-.logo-area .powered-by {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-}
-
-/* Status Badge — "NOW LIVE · v2.0" */
+/* ✅ STATUS BADGE - "NOW LIVE · v2.0" */
 .status-badge {
     display: inline-block;
     background: #E8F0FE;
-    color: var(--accent-blue);
+    color: var(--color-accent);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.7rem;
@@ -52,194 +25,139 @@ body {
     margin-bottom: 16px;
 }
 
-/* Hero Title — "CREMARKET SOCIAL" */
+/* ✅ HERO TITLE - "CREMARKET SOCIAL" */
 .wealth-text {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--color-text-primary);
     margin-bottom: 8px;
 }
 
-/* Subtitle — "The blueprint for modern Commercial Real Estate" */
+/* ✅ SUBTITLE */
 .subtitle {
     font-size: 1rem;
-    color: var(--text-muted);
+    color: var(--color-text-secondary);
     margin-bottom: 32px;
 }
 
-/* Main Layout — Sidebar + Content */
-.community-layout {
-    display: flex;
-    max-width: 1400px;
-    margin: 0 auto;
+/* ✅ CARD GRID */
+.pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* ✅ CARD - white, border, subtle hover */
+.pillar-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
     padding: 24px;
-    gap: 32px;
+    transition: all 0.2s ease;
 }
 
-/* Sidebar */
-.community-sidebar {
-    width: 260px;
-    flex-shrink: 0;
+.pillar-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
 }
 
-.sidebar-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px 0;
+/* ✅ FEATURED CARD */
+.featured-border {
+    border: 1px solid var(--color-accent);
+    background: linear-gradient(135deg, #FFFFFF, #F8F9FA);
 }
 
-.sidebar-nav li {
-    margin-bottom: 4px;
+/* ✅ ICON */
+.pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
 }
 
-.sidebar-nav a {
-    display: block;
-    padding: 8px 12px;
-    color: var(--text-dark);
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-}
-
-.sidebar-nav a:hover,
-.sidebar-nav a.active {
-    background: var(--bg-gray);
-    font-weight: 500;
-}
-
-/* Main Content */
-.community-main {
-    flex: 1;
-}
-
-/* Section Titles */
-.section-title {
+/* ✅ CARD TITLE */
+.pillar-card h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    margin-bottom: 16px;
-    color: var(--text-dark);
-}
-
-/* Space Cards */
-.spaces-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-    margin-bottom: 32px;
-}
-
-.space-card {
-    background: var(--bg-white);
-    border: 1px solid var(--border-light);
-    border-radius: 12px;
-    padding: 16px;
-    transition: all 0.2s;
-}
-
-.space-card:hover {
-    border-color: var(--accent-blue);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.space-card h4 {
-    font-size: 1rem;
-    font-weight: 600;
     margin-bottom: 8px;
+    color: var(--color-text-primary);
 }
 
-.space-card p {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-}
-
-.space-meta {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    display: flex;
-    gap: 16px;
-}
-
-/* Trending Section */
-.trending-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.trending-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.trending-list a {
-    text-decoration: none;
-    color: var(--text-dark);
+/* ✅ CARD DESCRIPTION */
+.pillar-card p {
     font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+    line-height: 1.4;
 }
 
-.trending-stats {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    margin-top: 4px;
-}
-
-/* Top Members */
-.member-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.member-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    font-size: 0.85rem;
-    border-bottom: 1px solid var(--border-light);
-}
-
-.member-name {
-    font-weight: 500;
-}
-
-.member-points {
-    color: var(--accent-blue);
-}
-
-/* Right Sidebar */
-.community-right {
-    width: 260px;
-    flex-shrink: 0;
-}
-
-/* Button styles */
+/* ✅ BUTTON */
 .pillar-btn {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 8px 16px;
     background: transparent;
-    border: 1px solid var(--border-light);
+    border: 1px solid var(--color-border);
     border-radius: 100px;
-    color: var(--text-dark);
+    color: var(--color-text-primary);
     font-size: 0.75rem;
+    font-weight: 500;
     text-decoration: none;
+    transition: all 0.2s;
 }
 
-.pillar-btn.highlighted {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
+.pillar-btn:hover {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
     color: white;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .community-layout {
-        flex-direction: column;
+.pillar-btn.highlighted {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: white;
+}
+
+.pillar-btn.ghost {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.btn-arrow {
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+.pillar-btn:hover .btn-arrow {
+    transform: translateX(3px);
+}
+
+/* ✅ CARD GLOW (subtle, no neon) */
+.card-glow {
+    position: relative;
+}
+
+/* ✅ WRAPPER */
+.cre-mission-control-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.cre-mission-control {
+    text-align: center;
+}
+
+/* ✅ RESPONSIVE */
+@media (max-width: 768px) {
+    .pillar-grid {
+        grid-template-columns: 1fr;
     }
-    .community-sidebar,
-    .community-right {
-        width: 100%;
+    
+    .wealth-text {
+        font-size: 1.8rem;
+    }
+    
+    .pillar-card {
+        padding: 20px;
     }
 }
