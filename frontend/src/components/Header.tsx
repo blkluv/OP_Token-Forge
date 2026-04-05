@@ -15,7 +15,7 @@ export function Header() {
             <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
                 <div className="flex items-center gap-8">
                     <Link to="/" className="text-lg font-bold text-white">
-                        Vibe<span className="text-accent-light">Factory</span>
+                        <span className="text-accent-light">Rent.</span>CREMARKET.io
                     </Link>
                     <nav className="hidden md:flex items-center gap-1">
                         {navLinks.map((link) => (
